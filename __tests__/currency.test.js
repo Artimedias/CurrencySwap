@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 describe('getEuro', () => {
 
-    test('Should return ', () => {
+    test('Should return the exchange rate between the GPD and Euro', () => {
       
         let testing = Money.getEuro()
         testing.then(function(response) 
