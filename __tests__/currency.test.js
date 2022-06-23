@@ -1,13 +1,17 @@
 import Money from "./../src/js/currency.js"
+import $ from 'jquery';
 
 describe('getEuro', () => {
-    expect(Money.getEuro()).toBeGreaterThan(0);
 
     test('Should return ', () => {
-        testing = Money.getEuro()
-        console.log(getEuro)
-        const body = JSON.parse(testing);
+      
+        let testing = Money.getEuro()
+        testing.then(function(response) 
+        {
+          console.log("reached!");
+        const body = JSON.parse(response);
         console.log(body)
-        expect(body.conversion_rate).toBeGreaterThan(0);
+        expect(`${body.conversion_rate}`).toBeGreaterThan(0);
+        });
       });
 });

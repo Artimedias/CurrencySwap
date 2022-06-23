@@ -19,18 +19,17 @@ export default class Money {
     }*/
 
     static getEuro() {
-      return new Promise(function (resolve, reject){
+      let promise = new Promise(function(resolve, reject) {
         let request = new XMLHttpRequest();
-        console.log("reached!");
-        const rate = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/EUR/GBP`;
-        request.onload = function () {
+        const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/EUR/GBP`;
+        request.onload = function() {
           if (this.status === 200) {
             resolve(request.response);
-          }else {
+          } else {
             reject(request.response);
           }
-        };
-        request.open("GET", rate, true);
+        }
+        request.open("GET", url, true);
         request.send();
       });
     }
