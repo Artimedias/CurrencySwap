@@ -1,3 +1,9 @@
 body {
-    background-color: green;
+    background-color: gray;
+    white-space: pre-line;
   }
+
+#helper {
+  display:none;
+  white-space: pre-line;
+}

@@ -8,10 +8,11 @@ $(document).ready(function() {
   $('#swapSubmit').click(function() {
     let money1 = $('#moneyOne').val();
     let money2 = $('#moneyTwo').val();
+    let money3 = $('#moneyAmount').val();
     $('#moneyOne').val("");
     $('#moneyTwo').val("");
+    $('#moneyThree').val("");
 
-// New code begins here.
 console.log("reached");
     let promise = new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
@@ -29,17 +30,16 @@ console.log("reached");
 
     promise.then(function(response) {
       const body = JSON.parse(response);
-      $('#showRate').text("The exchange rate between" + money1 + " and " + money2 + " is " + `${body.conversion_rate}%`);
+      console.log((`${body.conversion_rate}`));
+      console.log((money3));
+      
+      $('#showRate').text("The exchange rate between" + money1 + " and " + money2 + " is " + `${body.conversion_rate}%` + "\n" + money3 + " " + money1 + " is equal to " + (`${body.conversion_rate}` * money3) + " " + money2);
     }, function(error) {
-      $('.showErrors').text(`There was an error processing your request: ${error}`);
-      $('.showHumidity').text("");
-      $('.showTemp').text("");
+      $('#showErrors').text(`There was an error processing your request: ${error}`);
     });
   });
-});
-
-/*$(document).ready(function() {
-
-  $("#formDone").click(function () {
+    $('#codes').click(function() {
+      $("#helper").toggle();
     });
-  });*/
+
+});
