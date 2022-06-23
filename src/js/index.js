@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/styles.css';
-//import Money from "../js/currency.js"
+import Currency from "../js/currency.js"
 
 $(document).ready(function() {
   $('#swapSubmit').click(function() {
@@ -13,20 +13,7 @@ $(document).ready(function() {
     $('#moneyTwo').val("");
     $('#moneyThree').val("");
 
-console.log("reached");
-    let promise = new Promise(function(resolve, reject) {
-      let request = new XMLHttpRequest();
-      const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/${money1}/${money2}`;
-      request.onload = function() {
-        if (this.status === 200) {
-          resolve(request.response);
-        } else {
-          reject(request.response);
-        }
-      }
-      request.open("GET", url, true);
-      request.send();
-    });
+    let promise = Currency.exchange(money1, money2)
 
     promise.then(function(response) {
       const body = JSON.parse(response);
