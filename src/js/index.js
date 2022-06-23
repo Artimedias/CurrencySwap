@@ -17,8 +17,6 @@ $(document).ready(function() {
 
     promise.then(function(response) {
       const body = JSON.parse(response);
-      console.log((`${body.conversion_rate}`));
-      console.log((money3));
       
       $('#showRate').text("The exchange rate between" + money1 + " and " + money2 + " is " + `${body.conversion_rate}%` + "\n" + money3 + " " + money1 + " is equal to " + (`${body.conversion_rate}` * money3) + " " + money2);
     }, function(error) {
