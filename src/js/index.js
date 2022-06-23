@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/styles.css';
-import Currency from "../js/currency.js"
+import Currency from "../js/currency.js";
 
 $(document).ready(function() {
   $('#swapSubmit').click(function() {
@@ -13,7 +13,7 @@ $(document).ready(function() {
     $('#moneyTwo').val("");
     $('#moneyThree').val("");
 
-    let promise = Currency.exchange(money1, money2)
+    let promise = Currency.exchange(money1, money2);
 
     promise.then(function(response) {
       const body = JSON.parse(response);
@@ -25,8 +25,8 @@ $(document).ready(function() {
       $('#showErrors').text(`There was an error processing your request: ${error}`);
     });
   });
-    $('#codes').click(function() {
-      $("#helper").toggle();
-    });
+  $('#codes').click(function() {
+    $("#helper").toggle();
+  });
 
 });
